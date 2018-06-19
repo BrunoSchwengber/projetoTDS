@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+       <form id="login" method="post" action="#{request.contextPath}/j_spring_security_check"> 
+	<table>
+		<tr><td>Login</td>
+			<td><input type='text' name='j_username'/></td></tr> 
+		<tr><td>Senha</td>
+			<td><input type='password' name='j_password'/></td></tr>
+		<!--<tr><td align="right"><input type="checkbox" name="_spring_security_remember_me"/></td> 
+			<td>Logar automaticamente</td></tr>-->
+		<tr><td></td>
+			<td><input type="submit" value="Logar"/></td>
+		</tr>
+	</table>
+	<script>
+		document.getElementById("login").j_username.value = "#{SPRING_SECURITY_LAST_USERNAME}"; 
+	</script>
+	</form>
+    </body>
+</html>

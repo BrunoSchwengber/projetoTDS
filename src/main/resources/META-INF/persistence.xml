@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="ProjetoTDS" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>utfpr.bruno.projetotds.imovel.Imovel</class>
+    <class>utfpr.bruno.projetotds.usuario.Usuario</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/projetotds"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="12345"/>
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.classloading.use_current_tccl_as_parent" value="false"/>
+      <!-- UTILIZA-SE ESSA PROPRIEDADE, CASO QUEIRA SUBSTITUIR AS PROPRIEDADES DE CONEXÃO PELO ARQUIVO META-INF/context.xml -->
+      <property name="connection.datasource" value="java:/comp/env/jdbc/projetotds"/>
+    </properties>
+  </persistence-unit>
+</persistence>
