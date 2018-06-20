@@ -14,12 +14,13 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
+        
         <h:form id="cadastroImovel">
 		<h:messages/> 
 		<h:inputHidden value="#{imovelBean.imovel.codigo}"/> 
-		<h:inputHidden value="#{imovelBean.destinoSalvar}"/>
-					
+		<h:inputHidden value="#{imovelBean.destinoSalvar}"/>			
 		<h:panelGrid columns="2">
+                        
 			<h:outputLabel value="Descricao:" for="descricao"/>
                         <h:inputText id="descricao" label="Descricao" value="#{imovelBean.imovel.descricao}" size="50" 
 				maxlength="100" required="true" requiredMessage="Insira uma descrição"> 

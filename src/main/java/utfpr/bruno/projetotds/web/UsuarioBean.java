@@ -5,6 +5,7 @@
  */
 package utfpr.bruno.projetotds.web;
 
+import static java.util.Collections.list;
 import utfpr.bruno.projetotds.dao.ConexaoHibernate;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -15,6 +16,7 @@ import javax.mail.MessagingException;
 import javax.persistence.EntityManager;
 import org.primefaces.model.StreamedContent;
 import utfpr.bruno.projetotds.usuario.Usuario;
+import utfpr.bruno.projetotds.usuario.UsuarioDAO;
 import utfpr.bruno.projetotds.usuario.UsuarioRN;
 import utfpr.bruno.projetotds.web.util.RelatorioUtil;
 
@@ -76,6 +78,12 @@ public class UsuarioBean {
         String nomeRelatorioSaida = "usuariosCadastrados";
         RelatorioUtil relatorioUtil = new RelatorioUtil();
         return arquivoRetorno;
+    }
+    
+    public List<Usuario> listarTodos(){
+        UsuarioDAO dao = new UsuarioDAO();
+        List<Usuario> list = dao.listarTodos();
+        return list;
     }
 
     public void setArquivoRetorno(StreamedContent arquivoRetorno) {

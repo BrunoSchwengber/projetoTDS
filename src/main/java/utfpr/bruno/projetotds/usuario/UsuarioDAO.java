@@ -5,8 +5,13 @@
  */
 package utfpr.bruno.projetotds.usuario;
 
+import java.util.List;
 import utfpr.bruno.projetotds.dao.ConexaoHibernate;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -32,5 +37,15 @@ public class UsuarioDAO {
         this.manager.getTransaction().begin();
         this.manager.remove(usuario);
         this.manager.getTransaction().commit();
+    }
+    public List<Usuario> listarTodos(){
+        CriteriaBuilder cb = manager.getCriteriaBuilder();
+        CriteriaQuery<Usuario> u = cb.createQuery(Usuario.class);
+        Root<Usuario> a = u.from(Usuario.class);
+        u.select(a);
+        
+        TypedQuery<Usuario> query = this.manager.createQuery(u);
+        List<Usuario> usuarios = query.getResultList();
+        return usuarios;
     }
 }

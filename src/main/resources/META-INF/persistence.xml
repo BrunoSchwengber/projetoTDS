@@ -15,6 +15,7 @@
       <property name="hibernate.classloading.use_current_tccl_as_parent" value="false"/>
       <!-- UTILIZA-SE ESSA PROPRIEDADE, CASO QUEIRA SUBSTITUIR AS PROPRIEDADES DE CONEXÃO PELO ARQUIVO META-INF/context.xml -->
       <property name="connection.datasource" value="java:/comp/env/jdbc/projetotds"/>
+      <property name="javax.persistence.schema-generation.database.action" value="none"/>
     </properties>
   </persistence-unit>
 </persistence>
