@@ -5,6 +5,8 @@
  */
 package utfpr.bruno.projetotds.usuario;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.mail.MessagingException;
 
 /**
@@ -34,4 +36,10 @@ public class UsuarioRN {
             
             this.usuarioDAO.excluir(usuario);
 	}
+    public List<Usuario> listarTodos(){
+        UsuarioDAO usuario = new UsuarioDAO();
+        List<Usuario> list = new ArrayList<Usuario>();
+        list = usuario.listarTodos();
+        return list;
+    }
 }

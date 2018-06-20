@@ -5,6 +5,7 @@
  */
 package utfpr.bruno.projetotds.usuario;
 
+import java.util.ArrayList;
 import java.util.List;
 import utfpr.bruno.projetotds.dao.ConexaoHibernate;
 import javax.persistence.EntityManager;
@@ -39,13 +40,14 @@ public class UsuarioDAO {
         this.manager.getTransaction().commit();
     }
     public List<Usuario> listarTodos(){
+        List<Usuario> usuarios = new ArrayList<Usuario>();
         CriteriaBuilder cb = manager.getCriteriaBuilder();
         CriteriaQuery<Usuario> u = cb.createQuery(Usuario.class);
         Root<Usuario> a = u.from(Usuario.class);
         u.select(a);
         
         TypedQuery<Usuario> query = this.manager.createQuery(u);
-        List<Usuario> usuarios = query.getResultList();
+        usuarios = query.getResultList();
         return usuarios;
     }
 }
