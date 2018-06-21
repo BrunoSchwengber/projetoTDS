@@ -20,6 +20,10 @@ and open the template in the editor.
                     <f:setPropertyActionListener value="#{usuario}" target="#{usuarioBean.userSelected}" />
                     <h:outputText value="excluir"/>
                 </h:commandLink>
+                <h:commandLink action="#{usuarioBean.atualizar}"  style="float:left;margin-right:10px">
+                    <f:setPropertyActionListener value="#{usuario}" target="#{usuarioBean.usuario}" />
+                    <h:outputText value="editar"/>
+                </h:commandLink>
                 <h:outputText value="#{usuario.nome}, #{usuario.ativo}" style="display:inline-block"/>
             </p:dataList>
             

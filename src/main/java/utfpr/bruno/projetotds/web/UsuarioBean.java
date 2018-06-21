@@ -9,6 +9,7 @@ import static java.util.Collections.list;
 import utfpr.bruno.projetotds.dao.ConexaoHibernate;
 import java.util.List;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -25,7 +26,7 @@ import utfpr.bruno.projetotds.web.util.RelatorioUtil;
  * @author BRUNO
  */
 @ManagedBean(name = "usuarioBean")
-@RequestScoped
+@ApplicationScoped
 public class UsuarioBean {
     private Usuario usuario = new Usuario();
     private String confirmarSenha;
@@ -72,7 +73,9 @@ public class UsuarioBean {
 		usuarioRN.excluir(this.userSelected);
 		return "listagem";
 	}
-
+    public String atualizar(){
+        return "/cadastroUsuario";
+    }
     public StreamedContent getArquivoRetorno() {
         FacesContext context = FacesContext.getCurrentInstance();
         String nomeRelatorioJasper = "usuarios";

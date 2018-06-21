@@ -11,7 +11,7 @@
 		<intercept-url pattern="/restrito/**" access="ROLE_USUARIO" />
 		<form-login login-page="/login.jsf" 
 			always-use-default-target="true" 
-			default-target-url="/restrito/cadastroImovel.jsf"
+			default-target-url="/index.jsf"
 			authentication-failure-url="/login.jsf?login_error=1"
                         login-processing-url="/j_spring_security_check" />
 		<logout/> 
