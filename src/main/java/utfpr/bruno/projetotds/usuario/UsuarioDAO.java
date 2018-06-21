@@ -9,11 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 import utfpr.bruno.projetotds.dao.ConexaoHibernate;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-
+import utfpr.bruno.projetotds.usuario.Usuario;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 /**
  *
  * @author ALUNO
@@ -40,14 +45,21 @@ public class UsuarioDAO {
         this.manager.getTransaction().commit();
     }
     public List<Usuario> listarTodos(){
-        List<Usuario> usuarios = new ArrayList<Usuario>();
         CriteriaBuilder cb = manager.getCriteriaBuilder();
         CriteriaQuery<Usuario> u = cb.createQuery(Usuario.class);
         Root<Usuario> a = u.from(Usuario.class);
         u.select(a);
         
         TypedQuery<Usuario> query = this.manager.createQuery(u);
-        usuarios = query.getResultList();
+        List<Usuario> usuarios = query.getResultList();
         return usuarios;
+        
+        /* Query query = manager.createQuery("SELECT * FROM Usuario");
+        List<Usuario> usuarios = query.getResultList();
+        
+        while (!usuarios.isEmpty()){
+            System.out.println(usuarios.contains(usuarios));
+        }
+        return usuarios;*/
     }
 }

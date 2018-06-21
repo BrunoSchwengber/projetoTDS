@@ -33,6 +33,8 @@ public class UsuarioBean {
     private String destinoSalvar;
     private StreamedContent arquivoRetorno;
     private EntityManager manager;
+    private List<Usuario> listaUsuarios;
+    private Usuario userSelected = new Usuario();
     
     public String novo() {
 		this.destinoSalvar = "index";
@@ -67,9 +69,8 @@ public class UsuarioBean {
 	}
     public String excluir() {
 		UsuarioRN usuarioRN = new UsuarioRN();
-		usuarioRN.excluir(this.usuario);
-		this.lista = null;
-		return null;
+		usuarioRN.excluir(this.userSelected);
+		return "listagem";
 	}
 
     public StreamedContent getArquivoRetorno() {
@@ -79,11 +80,24 @@ public class UsuarioBean {
         RelatorioUtil relatorioUtil = new RelatorioUtil();
         return arquivoRetorno;
     }
+
+    public Usuario getUserSelected() {
+        return userSelected;
+    }
+
+    public void setUserSelected(Usuario userSelected) {
+        this.userSelected = userSelected;
+    }
     
-    public List<Usuario> listarTodos(){
+
+    public List<Usuario> getListaUsuarios() {
         UsuarioDAO dao = new UsuarioDAO();
         List<Usuario> list = dao.listarTodos();
         return list;
+    }
+
+    public void setListaUsuarios(List<Usuario> listaUsuarios) {
+        this.listaUsuarios = listaUsuarios;
     }
 
     public void setArquivoRetorno(StreamedContent arquivoRetorno) {
