@@ -6,6 +6,7 @@
 package utfpr.bruno.projetotds.web;
 
 import static java.util.Collections.list;
+import java.util.HashMap;
 import utfpr.bruno.projetotds.dao.ConexaoHibernate;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -81,6 +82,10 @@ public class UsuarioBean {
         String nomeRelatorioJasper = "usuarios";
         String nomeRelatorioSaida = "usuariosCadastrados";
         RelatorioUtil relatorioUtil = new RelatorioUtil();
+        HashMap parametrosRelatorio = new HashMap();
+        
+        parametrosRelatorio.put("codigoUsuario", this.getListaUsuarios().listIterator());
+        parametrosRelatorio.put("Nome Usuário", this.getListaUsuarios());
         return arquivoRetorno;
     }
 

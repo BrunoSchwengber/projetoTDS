@@ -28,5 +28,10 @@ and open the template in the editor.
             </p:dataList>
             
         </h:form>
-
+    <h:form>
+        <h:commandLink>
+            <p:fileDownload value="#{usuarioBean.arquivoRetorno}"/>
+            gerar pdf usuarios
+        </h:commandLink>
+    </h:form>
 </html>
