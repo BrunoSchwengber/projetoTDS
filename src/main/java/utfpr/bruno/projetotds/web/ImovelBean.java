@@ -5,6 +5,7 @@
  */
 package utfpr.bruno.projetotds.web;
 
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -25,6 +26,8 @@ import utfpr.bruno.projetotds.usuario.UsuarioRN;
 public class ImovelBean {
     private Imovel imovel = new Imovel();
     private String destinoSalvar = "cadastroImovel.jsf";
+    private List<Imovel> lista;
+    private Imovel imovelSelected = new Imovel();
     private EntityManager manager = ConexaoHibernate.getInstance();
 
     public String salvar() {
@@ -36,6 +39,38 @@ public class ImovelBean {
 		
 		return this.destinoSalvar;
 	}
+
+    public String excluir() {
+		ImovelRN imovelRN = new ImovelRN();
+		imovelRN.excluir(this.imovelSelected);
+		this.lista = null;
+		return null;
+    }
+    public String atualizar() {
+		
+		return "/restrito/cadastroImovel";
+	}
+    
+    public List<Imovel> getLista() {
+       
+        ImovelRN imovelRN = new ImovelRN();
+        this.lista = imovelRN.listar();
+        
+        return this.lista;
+    }
+
+    public void setLista(List<Imovel> lista) {
+        this.lista = lista;
+    }
+
+    public Imovel getImovelSelected() {
+        return imovelSelected;
+    }
+
+    public void setImovelSelected(Imovel imovelSelected) {
+        this.imovelSelected = imovelSelected;
+    }
+    
     public Imovel getImovel() {
         return imovel;
     }

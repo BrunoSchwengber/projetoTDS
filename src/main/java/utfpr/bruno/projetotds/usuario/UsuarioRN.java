@@ -8,6 +8,7 @@ package utfpr.bruno.projetotds.usuario;
 import java.util.ArrayList;
 import java.util.List;
 import javax.mail.MessagingException;
+import utfpr.bruno.projetotds.web.util.EmailUtil;
 
 /**
  *
@@ -24,12 +25,10 @@ public class UsuarioRN {
 		if (codigo == null || codigo == 0) {
 			usuario.getPermissao().add("ROLE_USUARIO"); 
 			this.usuarioDAO.salvar(usuario);
-                        //EmailUtil send = new EmailUtil(usuario.getEmail());
-                        // ALTERADO APÓS CRIAÇÃO DE CATEGORIA
-                        //CategoriaRN categoriaRN = new CategoriaRN();
-                        //categoriaRN.salvaEstruturaPadrao(usuario);
+                        EmailUtil send = new EmailUtil(usuario.getEmail());
+                        
 		} else {
-			//this.usuarioDAO.atualizar(usuario);
+			this.usuarioDAO.atualizar(usuario);
 		}
 	}
     public void excluir(Usuario usuario) {

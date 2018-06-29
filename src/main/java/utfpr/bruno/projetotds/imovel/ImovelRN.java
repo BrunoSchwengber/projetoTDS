@@ -5,7 +5,7 @@
  */
 package utfpr.bruno.projetotds.imovel;
 
-import utfpr.bruno.projetotds.usuario.Usuario;
+import java.util.List;
 
 /**
  *
@@ -28,4 +28,13 @@ public class ImovelRN {
 			//this.usuarioDAO.atualizar(usuario);
 		//}
 	}
+    public List<Imovel> listar(){
+        this.imovelDAO = new ImovelDAO();
+        return imovelDAO.listar();
+    }
+
+    public void excluir(Imovel imovel) {
+        this.imovelDAO = new ImovelDAO();
+        imovelDAO.excluir(imovel);
+    }
 }

@@ -62,4 +62,14 @@ public class UsuarioDAO {
         }
         return usuarios;*/
     }
+
+    
+        public void atualizar(Usuario usuario) {
+        
+        this.manager.getTransaction().begin();
+        this.manager.persist(usuario);
+        this.manager.flush();
+        this.manager.getTransaction().commit();
+    }
+    
 }

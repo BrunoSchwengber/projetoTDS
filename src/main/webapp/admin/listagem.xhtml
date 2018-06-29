@@ -14,7 +14,7 @@ and open the template in the editor.
         <h:form id="form">
             <p:dataList value="#{usuarioBean.listaUsuarios}" var="usuario" type="unordered" itemType="none" paginator="true" rows="10" styleClass="paginated">
                 <f:facet name="header">
-                    Paginator
+                    Lista de Usuários
                 </f:facet>
                 <h:commandLink action="#{usuarioBean.excluir}"  style="float:left;margin-right:10px">
                     <f:setPropertyActionListener value="#{usuario}" target="#{usuarioBean.userSelected}" />
@@ -25,6 +25,23 @@ and open the template in the editor.
                     <h:outputText value="editar"/>
                 </h:commandLink>
                 <h:outputText value="#{usuario.nome}, #{usuario.ativo}" style="display:inline-block"/>
+            </p:dataList>
+            
+        </h:form>
+    <h:form id="form1">
+            <p:dataList value="#{imovelBean.lista}" var="imovel" type="unordered" itemType="none" paginator="true" rows="10" styleClass="paginated">
+                <f:facet name="header">
+                    Lista de Imoveis
+                </f:facet>
+                <h:commandLink action="#{imovelBean.excluir}"  style="float:left;margin-right:10px">
+                    <f:setPropertyActionListener value="#{imovel}" target="#{imovelBean.imovelSelected}" />
+                    <h:outputText value="excluir"/>
+                </h:commandLink>
+                <h:commandLink action="#{imovelBean.atualizar}"  style="float:left;margin-right:10px">
+                    <f:setPropertyActionListener value="#{imovel}" target="#{imovelBean.imovel}" />
+                    <h:outputText value="editar"/>
+                </h:commandLink>
+                <h:outputText value="#{imovel.descricao}, #{imovel.endereco}" style="display:inline-block"/>
             </p:dataList>
             
         </h:form>

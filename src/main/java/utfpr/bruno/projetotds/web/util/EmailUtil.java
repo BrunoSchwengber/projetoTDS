@@ -9,17 +9,16 @@ public class EmailUtil {
 
 	private static final String SERVIDOR_SMTP = "mail.utfpr.edu.br";
 	private static final String PORTA_SERVIDOR_SMTP = "465";
-	private static final String EMAIL = "brunoschwengber@alunos.utfpr.edu.br";
-	private static final String SENHA = "****";
+	private static final String EMAIL = "brunohenriqueschwengber@gmail.com";
+	private static final String SENHA = "159753369";
 
-	public static void EmailUtil(String envio) throws AddressException, MessagingException{
-
-		Autenticacao autenticacao = new Autenticacao(EMAIL, SENHA); 
+	public EmailUtil(String emails) throws AddressException, MessagingException {
+                Autenticacao autenticacao = new Autenticacao(EMAIL, SENHA); 
 		Session session = Session.getDefaultInstance(getPropriedades(), autenticacao);
 		session.setDebug(true); 
 
 		MimeMessage email = new MimeMessage(session);
-		email.setRecipient(Message.RecipientType.TO, new InternetAddress(envio));
+		email.setRecipient(Message.RecipientType.TO, new InternetAddress(emails));
 		email.setFrom(new InternetAddress(EMAIL));
 		email.setSubject("Teste de e-mail usando Gmail");
 		email.setContent("Corpo da mensagem", "text/plain");
@@ -31,8 +30,8 @@ public class EmailUtil {
 		envios.close();
 
 		System.out.println("E-mail enviado com sucesso");
-	}
-
+    }
+        
 	public static Properties getPropriedades() {
 		Properties config = new Properties();
 		config.setProperty("mail.transport.protocol", "smtp");
@@ -47,4 +46,6 @@ public class EmailUtil {
 		config.setProperty("mail.smtp.socketFactory.fallback", "false");
 		return config;
 	}
+
+    
 }
