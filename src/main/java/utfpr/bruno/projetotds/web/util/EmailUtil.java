@@ -7,14 +7,15 @@ import utfpr.bruno.projetotds.web.util.Autenticacao;
 
 public class EmailUtil {
 
-	private static final String SERVIDOR_SMTP = "mail.utfpr.edu.br";
+	private static final String SERVIDOR_SMTP = "smtp.gmail.com";
 	private static final String PORTA_SERVIDOR_SMTP = "465";
 	private static final String EMAIL = "brunohenriqueschwengber@gmail.com";
 	private static final String SENHA = "159753369";
 
-	public EmailUtil(String emails) throws AddressException, MessagingException {
+        
+    public EmailUtil(String emails) throws AddressException, MessagingException {
                 Autenticacao autenticacao = new Autenticacao(EMAIL, SENHA); 
-		Session session = Session.getDefaultInstance(getPropriedades(), autenticacao);
+		Session session = Session.getInstance(getPropriedades(), autenticacao);
 		session.setDebug(true); 
 
 		MimeMessage email = new MimeMessage(session);
@@ -46,6 +47,8 @@ public class EmailUtil {
 		config.setProperty("mail.smtp.socketFactory.fallback", "false");
 		return config;
 	}
+
+
 
     
 }
