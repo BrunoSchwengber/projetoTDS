@@ -84,8 +84,8 @@ public class UsuarioBean {
         RelatorioUtil relatorioUtil = new RelatorioUtil();
         HashMap parametrosRelatorio = new HashMap();
         
-        parametrosRelatorio.put("codigoUsuario", this.getListaUsuarios().listIterator());
-        parametrosRelatorio.put("Nome Usuário", this.getListaUsuarios());
+        parametrosRelatorio.put("codigoUsuario", this.getListaUsuarios());
+        parametrosRelatorio.put("Nome Usuário", this.getListaUsuarios().listIterator());
         return arquivoRetorno;
     }
 
