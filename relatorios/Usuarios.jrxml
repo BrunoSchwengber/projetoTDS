@@ -19,9 +19,6 @@ FROM
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<title>
-		<band height="79" splitType="Stretch"/>
-	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch">
 			<textField>
@@ -30,27 +27,24 @@ FROM
 			</textField>
 		</band>
 	</pageHeader>
-	<columnHeader>
-		<band height="61" splitType="Stretch">
+	<detail>
+		<band height="26" splitType="Stretch">
 			<textField>
-				<reportElement x="93" y="12" width="100" height="20" uuid="cae5e395-52fc-4e3c-b24a-b459b0aaa679"/>
-				<textFieldExpression><![CDATA[$F{Usuario_codigo}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="193" y="12" width="100" height="20" uuid="23e327cf-fd1b-4aac-bbd2-5995ebe33cf5"/>
-				<textFieldExpression><![CDATA[$F{Usuario_nome}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="293" y="12" width="100" height="20" uuid="08033b9b-be93-41a3-97a1-496d505e9f37"/>
+				<reportElement x="208" y="0" width="246" height="20" uuid="49e2b62b-3b52-4dae-82e4-c73a09b90b55"/>
 				<textFieldExpression><![CDATA[$F{Usuario_email}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="393" y="12" width="100" height="20" uuid="bdd4e81a-d188-48d5-803a-94b100fd4d3b"/>
+				<reportElement x="454" y="0" width="69" height="20" uuid="4f435db2-869b-478e-b57c-8c34206248e5"/>
 				<textFieldExpression><![CDATA[$F{Usuario_ativo}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="58" y="0" width="50" height="20" uuid="a49cc07f-3fa8-49b6-a91e-93360364cf96"/>
+				<textFieldExpression><![CDATA[$F{Usuario_codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="108" y="0" width="100" height="20" uuid="76704816-03c1-4567-891b-db98c61a552c"/>
+				<textFieldExpression><![CDATA[$F{Usuario_nome}]]></textFieldExpression>
+			</textField>
 		</band>
-	</columnHeader>
-	<detail>
-		<band height="125" splitType="Stretch"/>
 	</detail>
 </jasperReport>

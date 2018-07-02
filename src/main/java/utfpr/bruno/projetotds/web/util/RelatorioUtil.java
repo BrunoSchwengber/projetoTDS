@@ -45,7 +45,7 @@ public class RelatorioUtil {
 			ExternalContext contextoExterno = contextoFaces.getExternalContext();
 			ServletContext contextoServlet = (ServletContext) contextoExterno.getContext();
 
-			String caminhoRelatorios = contextoServlet.getRealPath("/relatorios"); 
+			String caminhoRelatorios ="/home/bruno/NetBeansProjects/ProjetoTDS/relatorios/";//contextoServlet.getRealPath("/relatorios"); 
 			String caminhoArquivoJasper = caminhoRelatorios + File.separator + nomeRelatorioJasper 
 					+ ".jasper"; 
 			String caminhoArquivoRelatorio = caminhoRelatorios + File.separator + nomeRelatorioSaida;
