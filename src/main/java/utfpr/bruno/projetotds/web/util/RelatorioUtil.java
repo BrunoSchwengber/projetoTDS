@@ -8,7 +8,9 @@ package utfpr.bruno.projetotds.web.util;
 
 import utfpr.bruno.projetotds.dao.ConexaoHibernate;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -24,6 +26,7 @@ import net.sf.jasperreports.engine.export.*;
 import net.sf.jasperreports.engine.export.oasis.JROdtExporter;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.export.*;
+import org.primefaces.model.DefaultStreamedContent;
 
 
 /**
@@ -34,7 +37,7 @@ public class RelatorioUtil {
     private Connection connection;
     
     public StreamedContent geraRelatorio(HashMap parametrosRelatorio, String nomeRelatorioJasper,
-		String nomeRelatorioSaida, int tipoRelatorio) throws UtilException { 
+		String nomeRelatorioSaida) throws UtilException { 
 		StreamedContent arquivoRetorno = null;
 		try {
 			Connection conexao = this.getConexao(); 
@@ -53,9 +56,25 @@ public class RelatorioUtil {
 
 			String extensao = null;
 			File arquivoGerado = null;
-                } 
-                catch (JRException e) {
-			throw new UtilException("Nao foi possivel gerar o relatorio.", e);
+
+			
+                        JRPdfExporter pdfExportado = new JRPdfExporter(); 
+                        extensao = "pdf";
+                        arquivoGerado = new java.io.File(caminhoArquivoRelatorio + "." + extensao);
+                        pdfExportado.setExporterInput(new SimpleExporterInput(	impressoraJasper));
+                        pdfExportado.setExporterOutput(new SimpleOutputStreamExporterOutput(arquivoGerado));
+                        pdfExportado.exportReport();
+                        arquivoGerado.deleteOnExit(); 
+					
+						
+
+			InputStream conteudoRelatorio = new FileInputStream(arquivoGerado);
+			arquivoRetorno = new DefaultStreamedContent(conteudoRelatorio, "application/" 
+				+ extensao, nomeRelatorioSaida + "." + extensao); 
+		} catch (JRException e) {
+			throw new UtilException("N�o foi poss�vel gerar o relat�rio.", e);
+		} catch (FileNotFoundException e) {
+			throw new UtilException("Arquivo do relat�rio n�o encontrado.", e);
 		}
 		return arquivoRetorno;
 	}

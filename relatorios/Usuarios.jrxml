@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Usuarios" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5510a8ee-f2af-48c6-b77f-1374cd51d01c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     Usuario.`codigo` AS Usuario_codigo,
+     Usuario.`ativo` AS Usuario_ativo,
+     Usuario.`email` AS Usuario_email,
+     Usuario.`nome` AS Usuario_nome
+FROM
+     `Usuario` Usuario]]>
+	</queryString>
+	<field name="Usuario_codigo" class="java.lang.Long"/>
+	<field name="Usuario_nome" class="java.lang.String"/>
+	<field name="Usuario_email" class="java.lang.String"/>
+	<field name="Usuario_ativo" class="java.lang.Boolean"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="536" y="8" width="100" height="20" uuid="cbad2795-4bca-42b3-ae68-c17b086ba46b"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<textField>
+				<reportElement x="93" y="12" width="100" height="20" uuid="cae5e395-52fc-4e3c-b24a-b459b0aaa679"/>
+				<textFieldExpression><![CDATA[$F{Usuario_codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="193" y="12" width="100" height="20" uuid="23e327cf-fd1b-4aac-bbd2-5995ebe33cf5"/>
+				<textFieldExpression><![CDATA[$F{Usuario_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="293" y="12" width="100" height="20" uuid="08033b9b-be93-41a3-97a1-496d505e9f37"/>
+				<textFieldExpression><![CDATA[$F{Usuario_email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="393" y="12" width="100" height="20" uuid="bdd4e81a-d188-48d5-803a-94b100fd4d3b"/>
+				<textFieldExpression><![CDATA[$F{Usuario_ativo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+</jasperReport>

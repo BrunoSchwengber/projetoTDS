@@ -21,6 +21,7 @@ import utfpr.bruno.projetotds.usuario.Usuario;
 import utfpr.bruno.projetotds.usuario.UsuarioDAO;
 import utfpr.bruno.projetotds.usuario.UsuarioRN;
 import utfpr.bruno.projetotds.web.util.RelatorioUtil;
+import utfpr.bruno.projetotds.web.util.UtilException;
 
 /**
  *
@@ -77,16 +78,16 @@ public class UsuarioBean {
     public String atualizar(){
         return "/cadastroUsuario";
     }
-    public StreamedContent getArquivoRetorno() {
+    public StreamedContent getArquivoRetorno() throws UtilException {
         FacesContext context = FacesContext.getCurrentInstance();
-        String nomeRelatorioJasper = "usuarios";
+        String nomeRelatorioJasper = "Usuarios";
         String nomeRelatorioSaida = "usuariosCadastrados";
         RelatorioUtil relatorioUtil = new RelatorioUtil();
         HashMap parametrosRelatorio = new HashMap();
         
-        parametrosRelatorio.put("codigoUsuario", this.getListaUsuarios());
-        parametrosRelatorio.put("Nome Usuário", this.getListaUsuarios().listIterator());
-        return arquivoRetorno;
+        this.arquivoRetorno = relatorioUtil.geraRelatorio(parametrosRelatorio, nomeRelatorioJasper,
+                nomeRelatorioSaida); 
+        return this.arquivoRetorno;
     }
 
     public Usuario getUserSelected() {
