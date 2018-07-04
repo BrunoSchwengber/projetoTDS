@@ -17,6 +17,8 @@ import javax.faces.context.FacesContext;
 import javax.mail.MessagingException;
 import javax.persistence.EntityManager;
 import org.primefaces.model.StreamedContent;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import utfpr.bruno.projetotds.usuario.Usuario;
 import utfpr.bruno.projetotds.usuario.UsuarioDAO;
 import utfpr.bruno.projetotds.usuario.UsuarioRN;
@@ -61,12 +63,6 @@ public class UsuarioBean {
 		UsuarioRN usuarioRN = new UsuarioRN();
 		usuarioRN.salvar(this.usuario);
 
-		/*if (this.conta.getDescricao() != null) { 
-			this.conta.setUsuario(this.usuario); 
-			this.conta.setFavorita(true); 
-			ContaRN contaRN = new ContaRN();
-			contaRN.salvar(this.conta);
-		}*/
 		
 		return this.destinoSalvar;
 	}
@@ -78,6 +74,7 @@ public class UsuarioBean {
     public String atualizar(){
         return "/cadastroUsuario";
     }
+   
     public StreamedContent getArquivoRetorno() throws UtilException {
         FacesContext context = FacesContext.getCurrentInstance();
         String nomeRelatorioJasper = "Usuarios";

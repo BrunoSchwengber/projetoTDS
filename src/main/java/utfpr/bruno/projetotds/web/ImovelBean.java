@@ -25,7 +25,7 @@ import utfpr.bruno.projetotds.usuario.UsuarioRN;
 @RequestScoped
 public class ImovelBean {
     private Imovel imovel = new Imovel();
-    private String destinoSalvar = "index.jsf";
+    private String destinoSalvar = "/index.jsf";
     private List<Imovel> lista;
     private Imovel imovelSelected = new Imovel();
     private EntityManager manager = ConexaoHibernate.getInstance();
