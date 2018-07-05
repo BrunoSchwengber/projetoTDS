@@ -35,7 +35,7 @@ public class UsuarioBean {
     private Usuario usuario = new Usuario();
     private String confirmarSenha;
     private List<Usuario> lista;
-    private String destinoSalvar;
+    private String destinoSalvar = "index";
     private StreamedContent arquivoRetorno;
     private EntityManager manager;
     private List<Usuario> listaUsuarios;
